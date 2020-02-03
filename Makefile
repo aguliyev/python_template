@@ -12,7 +12,7 @@ stop:
 
 .PHONY: bashin
 bashin:
-	docker exec -it locus_lib_feature_flags_jupyter bash
+	docker exec -it python_template_web bash
 
 .PHONY: seelogs
 seelogs:
