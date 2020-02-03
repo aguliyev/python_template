@@ -4,7 +4,7 @@ build:
 
 .PHONY: start
 start:
-	docker-compose up -d
+	docker-compose up -d python_template_web
 
 .PHONY: stop
 stop:
@@ -20,12 +20,10 @@ seelogs:
 
 .PHONY: tests
 tests:
-	docker-compose run --rm python_template_web pytest tests
+	docker-compose run --env-file etc/env/test.env --env-file etc/secrets/test.env --rm python_template_web pytest tests
 
 .PHONY: jupyter
 jupyter:
-	docker run --rm -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes \
-	    --name python_template_jupyter \
-	    -v "$(shell pwd)/notebooks":/home/jovyan/work \
-	    -v "$(shell pwd)":/home/jovyan/app \
-	    jupyter/datascience-notebook
+	docker-compose up -d python_template_jupyter
+	sleep 4
+	docker logs --tail 8 python_template_jupyter

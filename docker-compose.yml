@@ -16,6 +16,7 @@ services:
         - PIP_PARAMS=${PIP_PARAMS}
     env_file:
       - etc/env/dev.env
+      - etc/secrets/dev.env
     command: ${WEB_SERVER}
     ports:
       - ${WEB_PORT:-5000}:5000
@@ -45,3 +46,21 @@ services:
       - ${POSTGRES_PORT:-5432}:5432
     volumes:
       - python_template_postgres_volume:/var/lib/postgresql/data:cached
+
+  python_template_jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile_jupyter
+    container_name: python_template_jupyter
+    image: python_template_jupyter
+    ports:
+      - ${JUPYTER_PORT:-8888}:8888
+    volumes:
+      - notebooks:/home/jovyan/work
+      - .:/home/jovyan/app
+    env_file:
+      - etc/env/dev.env
+      - etc/secrets/dev.env
+    depends_on:
+      - python_template_redis
+      - python_template_postgres
