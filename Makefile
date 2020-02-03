@@ -1,3 +1,7 @@
+.PHONY: build
+build:
+	docker-compose build
+
 .PHONY: start
 start:
 	docker-compose up -d
@@ -6,9 +10,9 @@ start:
 stop:
 	docker-compose stop
 
-.PHONY: build
-build:
-	docker-compose build
+.PHONY: bashin
+bashin:
+	docker exec -it locus_lib_feature_flags_jupyter bash
 
 .PHONY: seelogs
 seelogs:
@@ -25,4 +29,3 @@ jupyter:
 	    -v "$(shell pwd)/notebooks":/home/jovyan/work \
 	    -v "$(shell pwd)":/home/jovyan/app \
 	    jupyter/datascience-notebook
-s
