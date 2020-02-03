@@ -15,7 +15,7 @@ services:
       args:
         - PIP_PARAMS=${PIP_PARAMS}
     env_file:
-      - etc/dev.env
+      - etc/env/dev.env
     command: ${WEB_SERVER}
     ports:
       - ${WEB_PORT:-5000}:5000
