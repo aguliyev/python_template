@@ -1,5 +1,7 @@
+eventlet
 flask
+flask-socketio
 gunicorn
+psycopg2-binary
 pytest
 redis
-psycopg2-binary
