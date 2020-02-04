@@ -6,6 +6,20 @@ Template for dockerized python project - web, jupyter.
 
 [Makefile](Makefile)
 
+    make build
+    
+    make start
+    
+    make stop
+    
+    make shell
+    
+    make seelogs
+    
+    make test
+    
+    make jupyter
+
 # environment configs and secrets
 
 [etc/](etc/)
@@ -26,4 +40,9 @@ Template for dockerized python project - web, jupyter.
 
 # More
 
-See [docs/](docs/)
+See [doc/](doc/)
+
+# Jupyter
+
+- Run command in [Makefile](Makefile)
+- [notebooks/](notebooks/)
