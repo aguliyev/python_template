@@ -20,7 +20,7 @@ seelogs:
 
 .PHONY: test
 test:
-	env $(cat .env.test | grep "#" -v) docker-compose run --rm python_template_web pytest tests
+	@env $(shell cat ./.env.test | grep "#" -v) docker-compose run --rm python_template_web pytest tests -vv
 
 .PHONY: jupyter
 jupyter:
