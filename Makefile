@@ -18,9 +18,9 @@ bashin:
 seelogs:
 	docker logs -f python_template_web
 
-.PHONY: tests
-tests:
-	docker-compose run --env-file etc/env/test.env --env-file etc/secrets/test.env --rm python_template_web pytest tests
+.PHONY: test
+test:
+	env $(cat .env.test | grep "#" -v) docker-compose run --rm python_template_web pytest tests
 
 .PHONY: jupyter
 jupyter:
