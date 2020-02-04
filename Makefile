@@ -10,8 +10,8 @@ start:
 stop:
 	docker-compose stop
 
-.PHONY: bashin
-bashin:
+.PHONY: shell
+shell:
 	docker exec -it python_template_web sh
 
 .PHONY: seelogs
