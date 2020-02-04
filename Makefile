@@ -12,7 +12,7 @@ stop:
 
 .PHONY: bashin
 bashin:
-	docker exec -it python_template_web bash
+	docker exec -it python_template_web sh
 
 .PHONY: seelogs
 seelogs:
