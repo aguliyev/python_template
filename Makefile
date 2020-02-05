@@ -4,8 +4,7 @@ build:
 
 .PHONY: start
 start:
-	docker-compose up -d python_template_redis
-	docker-compose up -d python_template_postgres
+	docker-compose up -d python_template_redis python_template_postgres
 	docker-compose up -d python_template_web
 
 .PHONY: stop
@@ -23,8 +22,7 @@ seelogs:
 .PHONY: test
 test:
 	@echo "System env vars take precedence over vars in .env file. Loading .env.test as system env vars."
-	@env $(shell cat ./.env.test | grep "#" -v) docker-compose up -d python_template_redis
-	@env $(shell cat ./.env.test | grep "#" -v) docker-compose up -d python_template_postgres
+	@env $(shell cat ./.env.test | grep "#" -v) docker-compose up -d python_template_redis python_template_postgres
 	@env $(shell cat ./.env.test | grep "#" -v) docker-compose up python_template_web
 
 .PHONY: test
