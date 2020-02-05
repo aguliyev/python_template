@@ -53,7 +53,7 @@ Template for dockerized python project - web, jupyter.
     For production - that is a file somewhere on the server, not in this repo (if you decide to include secrets into this file).
     See [Makefile](Makefile) command `make startprod`
 
-- Those `.env.<env-name>` files also have paths to the files which will be passed as container environment (vars `ENV_FILE, SECRETS_FILE`).
+- Those `.env.<env-name>` files also contain paths to the files which will be passed as container environment (vars `ENV_FILE, SECRETS_FILE`).
 
     E.g. see [.env.test](.env.test), [.env.prod.sample](.env.prod.sample)
 
@@ -69,7 +69,7 @@ Notice: [entrypoints/test.sh](entrypoints/test.sh) is running tests.
 
 ## Running or skipping setup in entrypoint
 
-You may want to set up app on each startup - like DB migrations, data seeding etc.
+You may want to setup/bootstrap app on each startup - like DB migrations, data seeding etc.
 
 Per-environment scripts:
 
@@ -81,6 +81,8 @@ That is controlled by var `DO_SETUP`.
 It is in [.env](.env), and make be overloaded by system env var when needed:
 
         env DO_SETUP=0 make start
+        
+and yes, you can specify this var in `.env` file for each environment (e.g. [.env.test](.env.test))
 
 # More
 
