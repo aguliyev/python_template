@@ -22,7 +22,7 @@ Template for dockerized python project - web, jupyter.
     
     make jupyter
 
-# environment configs and secrets
+# Environment configs and secrets
 
 - [etc/env/](etc/env/)
 
@@ -34,7 +34,7 @@ environment variables which can **NOT** be commited to repo.
 We may commit secrets for dev and test to the repo; 
 but for other environments, you have those files on the server but not in the repo.
 
-# run in different environments
+## Run in different environments
 
 - Variables used as configs for [docker-compose.yml](docker-compose.yml) are in
 
@@ -52,7 +52,7 @@ but for other environments, you have those files on the server but not in the re
 
 - For production, secrets for container (specified by `SECRETS_FILE`) will be file on the server, not in the repo.
 
-# entrypoints
+# Entrypoints
 
 Per environment scripts:
 
@@ -60,7 +60,7 @@ Per environment scripts:
 
 Notice: [entrypoints/test.sh](entrypoints/test.sh) is running tests.
 
-# running or skipping setup in entrypoint
+## Running or skipping setup in entrypoint
 
 You may want to set up app on each startup - like DB migrations, data seeding etc.
 
