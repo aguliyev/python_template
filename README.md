@@ -30,8 +30,9 @@ environment variables which can be commited to repo.
 
 - [etc/secrets/](etc/secrets/)
 
-environment variables which can **NOT** be commited to repo. We may commit secrets for dev and test to the repo;
- for other environments, you have those files on the server but not in the repo.
+environment variables which can **NOT** be commited to repo. 
+We may commit secrets for dev and test to the repo; 
+but for other environments, you have those files on the server but not in the repo.
 
 # run in different environments
 
@@ -45,11 +46,11 @@ environment variables which can **NOT** be commited to repo. We may commit secre
 
     See [Makefile](Makefile) command `make startprod`
 
-- Those `.env.<env-name>` files also have paths to the files which will be passed as container environment.
+- Those `.env.<env-name>` files also have paths to the files which will be passed as container environment (specified by `ENV_FILE, SECRETS_FILE`).
 
     E.g. see [.env.test](.env.test)
 
-- For production, secrets for container will be file on the server, not in this repo.
+- For production, secrets for container (specified by `SECRETS_FILE`) will be file on the server, not in the repo.
 
 # entrypoints
 
