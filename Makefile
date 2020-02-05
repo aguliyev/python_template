@@ -22,9 +22,15 @@ seelogs:
 
 .PHONY: test
 test:
-	docker-compose up -d python_template_redis
-	docker-compose up -d python_template_postgres
+	@echo "System env vars take precedence over vars in .env file. Loading .env.test as system env vars."
+	@env $(shell cat ./.env.test | grep "#" -v) docker-compose up -d python_template_redis
+	@env $(shell cat ./.env.test | grep "#" -v) docker-compose up -d python_template_postgres
 	@env $(shell cat ./.env.test | grep "#" -v) docker-compose run --rm python_template_web sh -c 'pytest tests'
+
+.PHONY: test
+startprod:
+	@echo "System env vars take precedence over vars in .env file. Loading /path/to/.env.prod as system env vars."
+	@env $(shell cat /path/to/.env.prod | grep "#" -v) docker-compose up -d python_template_web
 
 .PHONY: jupyter
 jupyter:
