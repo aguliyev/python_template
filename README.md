@@ -41,6 +41,14 @@ environment variables which can **NOT** be commited to repo. We may commit secre
  E.g. see [.env.test](.env.test)
 - For production, secrets for container will be file on the server, not in this repo.
 
+# entrypoints
+
+Per environment:
+
+- [entrypoints/](entrypoints/)
+
+Notice: for test env, it is running tests.
+
 # More
 
 See [doc/](doc/)
@@ -49,3 +57,7 @@ See [doc/](doc/)
 
 - Run command in [Makefile](Makefile)
 - [notebooks/](notebooks/)
+
+# Web
+
+- http://localhost:5000/
