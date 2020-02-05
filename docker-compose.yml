@@ -17,7 +17,9 @@ services:
     env_file:
       - ${ENV_FILE}
       - ${SECRETS_FILE}
-    command: env DO_SETUP=${DO_SETUP} entrypoints/${ENV_NAME}.sh
+    environment:
+      DO_SETUP: ${DO_SETUP}
+    command: entrypoints/base.sh
     ports:
       - ${WEB_PORT}:5000
     volumes:

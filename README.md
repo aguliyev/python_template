@@ -54,7 +54,7 @@ but for other environments, you have those files on the server but not in the re
 
 # entrypoints
 
-Per environment:
+Per environment scripts:
 
 - [entrypoints/](entrypoints/)
 
@@ -62,7 +62,11 @@ Notice: [entrypoints/test.sh](entrypoints/test.sh) is running tests.
 
 # running or skipping setup in entrypoint
 
-You may want to set up app on each startup - like DB migrations etc.
+You may want to set up app on each startup - like DB migrations, data seeding etc.
+
+Per environment scripts:
+
+- [entrypoints/setups/](entrypoints/setups/)
 
 In some cases, you want to skip that slow step, and have lean entrypoint.
 
