@@ -26,13 +26,19 @@ Template for dockerized python project - web, jupyter.
 
 - [etc/env/](etc/env/)
 
-environment variables which can be commited to repo.
+    environment variables which can be commited to repo.
+    
+    path to this file is specified in `ENV_FILE`
 
 - [etc/secrets/](etc/secrets/)
 
-environment variables which can **NOT** be commited to repo. 
-We may commit secrets for dev and test to the repo; 
-but for other environments, you have those files on the server but not in the repo.
+    environment variables which can **NOT** be commited to repo. 
+    
+    We may commit secrets for dev and test only to the repo;
+    
+    but for other environments (prod, stage), you have those files somewhere on the server but not in the repo.
+    
+    path to this file is specified in `SECRETS_FILE`
 
 ## Run in different environments
 
@@ -42,7 +48,7 @@ but for other environments, you have those files on the server but not in the re
 
 - System env vars take precedence over vars in [.env](.env) file.
 
-- We load `.env.<env-name>` files as system env vars. For production - that is a file on the server, not in this repo.
+- We load `.env.<env-name>` files as system env vars. For production - that is a file somewhere on the server, not in this repo.
 
     See [Makefile](Makefile) command `make startprod`
 
