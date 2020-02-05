@@ -36,9 +36,9 @@ but for other environments, you have those files on the server but not in the re
 
 # run in different environments
 
-- [.env](.env) 
+- Variables used as configs for [docker-compose.yml](docker-compose.yml) are in
 
-    has variables used as configs for [docker-compose.yml](docker-compose.yml).
+    [.env](.env) 
 
 - System env vars take precedence over vars in [.env](.env) file.
 
