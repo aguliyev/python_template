@@ -4,6 +4,8 @@ build:
 
 .PHONY: start
 start:
+	docker-compose up -d python_template_redis
+	docker-compose up -d python_template_postgres
 	docker-compose up -d python_template_web
 
 .PHONY: stop
@@ -20,6 +22,8 @@ seelogs:
 
 .PHONY: test
 test:
+	docker-compose up -d python_template_redis
+	docker-compose up -d python_template_postgres
 	@env $(shell cat ./.env.test | grep "#" -v) docker-compose run --rm python_template_web sh -c 'pytest tests'
 
 .PHONY: jupyter

@@ -22,9 +22,6 @@ services:
       - ${WEB_PORT}:5000
     volumes:
       - .:/app
-    depends_on:
-      - python_template_redis
-      - python_template_postgres
 
   python_template_redis:
     image: redis:5.0.7-alpine
