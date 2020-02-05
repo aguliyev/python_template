@@ -54,13 +54,13 @@ Template for dockerized python project - web, jupyter.
 
 - Those `.env.<env-name>` files also have paths to the files which will be passed as container environment (specified by `ENV_FILE, SECRETS_FILE`).
 
-    E.g. see [.env.test](.env.test)
+    E.g. see [.env.test](.env.test), [.env.prod.sample](.env.prod.sample)
 
-- For production, secrets for container (specified by `SECRETS_FILE`) will be file on the server, not in the repo.
+- For production, secrets for container (specified by `SECRETS_FILE`) will be a file on the server, not in the repo.
 
 # Entrypoints
 
-Per environment scripts:
+Per-environment scripts:
 
 - [entrypoints/](entrypoints/)
 
@@ -70,13 +70,13 @@ Notice: [entrypoints/test.sh](entrypoints/test.sh) is running tests.
 
 You may want to set up app on each startup - like DB migrations, data seeding etc.
 
-Per environment scripts:
+Per-environment scripts:
 
 - [entrypoints/setups/](entrypoints/setups/)
 
 In some cases, you want to skip that slow step, and have lean entrypoint.
 
-That is controlled by var `DO_SETUP`. 
+That is controlled by var `DO_SETUP`.
 It is in [.env](.env), and make be overloaded by system env var when needed:
 
         env DO_SETUP=0 make start

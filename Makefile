@@ -29,7 +29,7 @@ test:
 
 .PHONY: test
 startprod:
-	@echo "System env vars take precedence over vars in .env file. Loading /path/to/.env.prod as system env vars."
+	@echo "System env vars take precedence over vars in .env file. Additionally, loading /path/to/.env.prod as system env vars."
 	@env $(shell cat /path/to/.env.prod | grep "#" -v) docker-compose up -d python_template_web
 
 .PHONY: jupyter
