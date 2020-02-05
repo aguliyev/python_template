@@ -67,6 +67,9 @@ See [doc/](doc/)
 # Jupyter
 
 - Run command in [Makefile](Makefile)
+
+        make jupyter
+
 - [notebooks/](notebooks/)
 
 # Web
