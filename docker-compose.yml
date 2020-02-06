@@ -19,6 +19,7 @@ services:
       - ${SECRETS_FILE}
     environment:
       DO_SETUP: ${DO_SETUP}
+      ENTRYPOINT_MODE: ${ENTRYPOINT_MODE}
     command: entrypoints/base.sh
     ports:
       - ${WEB_PORT}:5000

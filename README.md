@@ -61,7 +61,7 @@ Template for dockerized python project - web, jupyter.
 
 # Entrypoints
 
-Per-environment scripts:
+Per-environment entrypoint scripts:
 
 - [entrypoints/](entrypoints/)
 
@@ -71,18 +71,28 @@ Notice: [entrypoints/test.sh](entrypoints/test.sh) is running tests.
 
 You may want to setup/bootstrap app on each startup - like DB migrations, data seeding etc.
 
-Per-environment scripts:
+Per-environment setup scripts:
 
 - [entrypoints/setups/](entrypoints/setups/)
 
 In some cases, you want to skip that slow step, and have lean entrypoint.
 
 That is controlled by var `DO_SETUP`.
-It is in [.env](.env), and make be overloaded by system env var when needed:
+It is in [.env](.env), and may be overloaded by system env var when needed. E.g. run as:
 
         env DO_SETUP=0 make start
         
-and yes, you can specify this var in `.env` file for each environment (e.g. [.env.test](.env.test))
+and yes, you can specify this var in `.env` file for each environment (e.g. [.env.test](.env.test)).
+
+## Run entrypoint in different ways
+
+You can modify behavior of entrypoint (or setup) script when running it, by passing var `ENTRYPOINT_MODE` when running:
+
+        env ENTRYPOINT_MODE=lights_off make start
+        
+        env ENTRYPOINT_MODE=integration make test
+
+This var is passed down to container, and can be checked inside the script.
 
 # More
 
