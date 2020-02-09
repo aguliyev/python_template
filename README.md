@@ -49,6 +49,7 @@ Template for dockerized python project - web, jupyter.
 - System env vars take precedence over vars in [.env](.env) file. (So, you can avoid putting secrets into the file)
 
 - We load `.env.<env-name>` files as system env vars.
+    See [Makefile](Makefile) command `make test`
 
     For production - that is a file somewhere on the server, not in this repo (if you decide to include secrets into this file).
     See [Makefile](Makefile) command `make startprod`
