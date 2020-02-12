@@ -1,9 +1,9 @@
-PREPACK_IMAGE=anarguliyev/python_template_prepack:latest
+include .env
 
 .PHONY: prepack
 prepack:
-	@env $(shell cat ./.env | grep "#" -v) docker build --target python_template_prepack -t $(PREPACK_IMAGE) .
-	docker push $(PREPACK_IMAGE)
+	@env $(shell cat ./.env | grep "#" -v) docker build --target python_template_prepack -t ${PREPACK_IMAGE} .
+	docker push ${PREPACK_IMAGE}
 
 .PHONY: build
 build:
