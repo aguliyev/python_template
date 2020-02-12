@@ -8,12 +8,7 @@ RUN apt-get update && \
 WORKDIR /home/jovyan/work
 
 COPY requirements.txt .
-RUN echo ' \n\
-********** \n\
-***** Installing lxml takes too long, I know. I am sorry.. \n\
-********** \n\
-' && \
-pip install -r requirements.txt
+RUN pip install -r requirements.txt
 
 # instead of copying, bind dirs when running
 # COPY . .

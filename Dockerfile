@@ -8,7 +8,8 @@ RUN apk update && \
 
 COPY requirements.txt ./
 
-RUN pip install ${PIP_PARAMS} -r requirements.txt
+RUN echo "Running pip install with params: ${PIP_PARAMS}" && \
+    pip install ${PIP_PARAMS} -r requirements.txt
 
 
 FROM python_template_prepack
