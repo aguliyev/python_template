@@ -11,5 +11,5 @@ COPY requirements.txt ./
 RUN pip install ${PIP_PARAMS} -r requirements.txt
 
 
-FROM python_template_prepack:latest
+FROM python_template_prepack
 COPY . .
