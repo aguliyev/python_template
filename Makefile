@@ -1,7 +1,7 @@
 .PHONY: prepack
 prepack:
-	@env $(shell cat ./.env | grep "#" -v) docker build --target python_template_prepack -t python_template_prepack:latest .
-	# docker push python_template_prepack:latest
+	@env $(shell cat ./.env | grep "#" -v) docker build --target python_template_prepack -t anarguliyev/python_template_prepack:latest .
+	docker push anarguliyev/python_template_prepack:latest
 
 .PHONY: build
 build:
