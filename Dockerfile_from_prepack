@@ -1,0 +1,2 @@
+FROM anarguliyev/python_template_prepack:latest
+COPY . .

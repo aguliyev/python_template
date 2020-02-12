@@ -12,22 +12,24 @@ Template for dockerized python project - web, jupyter.
     
     make start
     
-    make stop
-    
-    make shell
-    
-    make seelogs
-    
-    make test
-    
     make startprod
+
+    make test
+
+    make stop
+        
+    make seelogs
     
     make jupyter
 
+    make shell
+
 # prepack and build
 
-- Prepack is creating a docker image, ready to be pushed into a repo. That will make build faster.
-- It is optional.
+- It is optional; Is it just a way of "storing cache in the repo" instead of relying on local cache.
+- `make prepack` is creating a docker image for "prepack" stage of [Dockerfile](Dockerfile), and pushes it into the repo.
+- You build from this "prepack" image by having `FROM_PREPACK=_from_prepack` in .env file (see [.env.prod.sample](.env.prod.sample) ) or system environment (it is empty by default).
+    - In this case, [Dockerfile_from_prepack](Dockerfile_from_prepack) is used instead of the main [Dockerfile](Dockerfile).
 
 # Environment configs and secrets
 

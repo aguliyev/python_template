@@ -11,7 +11,7 @@ services:
     container_name: python_template_web
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile${FROM_PREPACK}
       args:
         - PIP_PARAMS=${PIP_PARAMS}
     env_file:
