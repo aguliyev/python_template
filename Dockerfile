@@ -1,4 +1,4 @@
-FROM python:3.8.1-alpine3.11
+FROM python:3.8.1-alpine3.11 as python_template_prepack
 
 ARG PIP_PARAMS
 
@@ -10,4 +10,6 @@ COPY requirements.txt ./
 
 RUN pip install ${PIP_PARAMS} -r requirements.txt
 
+
+FROM python_template_prepack:latest
 COPY . .

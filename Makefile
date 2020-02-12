@@ -1,3 +1,8 @@
+.PHONY: prepack
+prepack:
+	docker build --target python_template_prepack -t python_template_prepack:latest .
+	# docker push python_template_prepack:latest
+
 .PHONY: build
 build:
 	docker-compose build

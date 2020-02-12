@@ -6,6 +6,8 @@ Template for dockerized python project - web, jupyter.
 
 [Makefile](Makefile)
 
+    make prepack
+    
     make build
     
     make start
@@ -21,6 +23,11 @@ Template for dockerized python project - web, jupyter.
     make startprod
     
     make jupyter
+
+# prepack and build
+
+- Prepack is creating a docker image, ready to be pushed into a repo. That will make build faster.
+- It is optional.
 
 # Environment configs and secrets
 
