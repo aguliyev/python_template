@@ -1,2 +1,3 @@
-FROM anarguliyev/python_template_prepack:latest
+ARG PREPACK_IMAGE
+FROM ${PREPACK_IMAGE}
 COPY . .

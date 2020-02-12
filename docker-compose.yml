@@ -14,6 +14,7 @@ services:
       dockerfile: Dockerfile${FROM_PREPACK}
       args:
         - PIP_PARAMS=${PIP_PARAMS}
+        - PREPACK_IMAGE=${PREPACK_IMAGE}
     env_file:
       - ${ENV_FILE}
       - ${SECRETS_FILE}
