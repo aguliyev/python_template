@@ -49,4 +49,4 @@ shell:
 
 .PHONY: shellrun
 shellrun:
-	docker-compose run --rm python_template_web sh
+	@env DO_SETUP=0 ENTRYPOINT_MODE=shell docker-compose run --rm python_template_web sh
