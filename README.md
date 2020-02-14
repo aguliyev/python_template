@@ -10,6 +10,8 @@ Template for dockerized python project - web, jupyter.
     
     make build
     
+    make publish
+    
     make start
     
     make startprod
@@ -24,13 +26,19 @@ Template for dockerized python project - web, jupyter.
 
     make shell
 
-# prepack and build
+# build and publish docker image
+
+    make build publish
+
+The image name and repo is specified `IMAGE` var in .env file or system environment.
+
+## prepack
 
 - It is optional; Is it just a way of "storing cache in the repo" instead of relying on local cache.
 - `make prepack` is creating a docker image for "prepack" stage of [Dockerfile](Dockerfile), and pushes it into the repo.
 - You build from this "prepack" image by having `FROM_PREPACK=_from_prepack` in .env file (see [.env.prod.sample](.env.prod.sample) ) or system environment. It is empty by default.
     - In this case, [Dockerfile_from_prepack](Dockerfile_from_prepack) is used instead of the main [Dockerfile](Dockerfile).
-- The docker repo for the image is defined by `PREPACK_IMAGE` in .env file or env var.
+- The docker repo for the image is defined by `PREPACK_IMAGE` var in .env file or system environment.
 
 # Environment configs and secrets
 

@@ -7,7 +7,7 @@ volumes:
 services:
 
   python_template_web:
-    image: python_template_web
+    image: ${IMAGE}
     container_name: python_template_web
     build:
       context: .

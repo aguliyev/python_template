@@ -9,6 +9,10 @@ prepack:
 build:
 	docker-compose build
 
+.PHONY: publish
+publish:
+	@export $(shell cat ./.env | grep "#" -v) && docker push $$IMAGE
+
 .PHONY: start
 start:
 	docker-compose up -d python_template_redis python_template_postgres
