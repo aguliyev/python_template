@@ -7,7 +7,7 @@ prepack:
 
 .PHONY: build
 build:
-	@env $(shell cat .env | grep "#" -v) && docker-compose build
+	docker-compose build
 
 .PHONY: publish
 publish:
@@ -21,12 +21,12 @@ start:
 .PHONY: test
 startprod:
 	@echo "System env vars take precedence over vars in .env file. Additionally, loading .env.prod as system env vars."
-	@env $(shell cat .env.prod | grep "#" -v) docker-compose up -d python_template_web
+	@env $(shell cat .env .env.prod | grep "#" -v) docker-compose up -d python_template_web
 
 .PHONY: test
 test:
-	@env $(shell cat .env.test | grep "#" -v) docker-compose up -d python_template_redis python_template_postgres
-	@env $(shell cat .env.test | grep "#" -v) docker-compose up python_template_web
+	@env $(shell cat .env .env.test | grep "#" -v) docker-compose up -d python_template_redis python_template_postgres
+	@env $(shell cat .env .env.test | grep "#" -v) docker-compose up python_template_web
 
 .PHONY: stop
 stop:
