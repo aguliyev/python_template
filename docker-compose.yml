@@ -15,6 +15,7 @@ services:
       args:
         - PIP_PARAMS=${PIP_PARAMS}
         - PREPACK_IMAGE=${PREPACK_IMAGE}
+        - APPUSER=${APPUSER}
     env_file:
       - ${ENV_FILE}
       - ${SECRETS_FILE}
