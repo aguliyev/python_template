@@ -1,7 +1,7 @@
 .PHONY: prepack
 prepack:
 	@echo "Building prepack.."
-	@export $(shell cat ./.env | grep "#" -v) && env $(shell cat /path/to/.env | grep "#" -v) docker build --target python_template_prepack -t $$PREPACK_IMAGE .
+	@export $(shell cat ./.env | grep "#" -v) && env $(shell cat ./.env | grep "#" -v) docker build --target python_template_prepack -t $$PREPACK_IMAGE --build-arg PIP_PARAMS="$$PIP_PARAMS" --build-arg APPUSER=$$APPUSER .
 	@export $(shell cat ./.env | grep "#" -v) && echo "Push prepack to $$PREPACK_IMAGE"
 	@export $(shell cat ./.env | grep "#" -v) && docker push $$PREPACK_IMAGE
 
