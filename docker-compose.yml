@@ -20,8 +20,11 @@ services:
       - etc/env/${ENV_NAME}.env
       - ${SECRETS_FILE}
     environment:
-      DO_SETUP: ${DO_SETUP}
-      ENTRYPOINT_MODE: ${ENTRYPOINT_MODE}
+      - DO_SETUP
+      - ENTRYPOINT_MODE
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
     ports:
       - ${WEB_PORT}:5000
     volumes:

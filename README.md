@@ -75,6 +75,8 @@ The image name and repo is specified `IMAGE` var in .env file or system environm
 
 - For production, secrets for container (specified by `SECRETS_FILE`) will be a file somewhere on the server, not in the repo.
 
+- Values present in the environment at runtime always override those defined inside the .env file. Similarly, values passed via command-line arguments take precedence as well.
+
 # Entrypoints
 
 Per-environment entrypoint scripts:
