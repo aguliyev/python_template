@@ -38,7 +38,7 @@ The image name and repo is specified `IMAGE` var in .env file or system environm
 
 - It is optional; Is it just a way of "storing cache in the repo" instead of relying on local cache.
 - `make prepack` is creating a docker image for "prepack" stage of [Dockerfile](Dockerfile), and pushes it into the repo.
-- You build from this "prepack" image by having `FROM_PREPACK=_from_prepack` in .env file (see [.env.prod.sample](.env.prod.sample) ) or system environment. It is empty by default.
+- You build from this "prepack" image by having `FROM_PREPACK=_from_prepack` in .env file (see example in [.env.prod](.env.prod) ) or in system environment. It is empty by default.
     - In this case, [Dockerfile_from_prepack](Dockerfile_from_prepack) is used instead of the main [Dockerfile](Dockerfile).
 - The docker repo for the image is defined by `PREPACK_IMAGE` var in .env file or system environment.
 
@@ -66,15 +66,12 @@ The image name and repo is specified `IMAGE` var in .env file or system environm
 
 - System env vars take precedence over vars in [.env](.env) file. (So, you can avoid putting secrets into the file)
 
-- We load `.env.<env-name>` files as system env vars.
-    See [Makefile](Makefile) command `make test`
-
-    For production - that is a file somewhere on the server, not in this repo (if you decide to include secrets into this file).
-    See [Makefile](Makefile) command `make startprod`
+- We load `.env.<env-name>` files as system env vars; they overload [.env](.env).
+    See [Makefile](Makefile) command `make test` or `make startprod`
 
 - Those `.env.<env-name>` files also contain paths to the files which will be passed as container environment (vars `SECRETS_FILE`).
 
-    E.g. see [.env.test](.env.test), [.env.prod.sample](.env.prod.sample)
+    E.g. see [.env.test](.env.test), [.env.prod](.env.prod)
 
 - For production, secrets for container (specified by `SECRETS_FILE`) will be a file somewhere on the server, not in the repo.
 
