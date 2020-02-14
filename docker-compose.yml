@@ -17,7 +17,7 @@ services:
         - PIP_PARAMS=${PIP_PARAMS}
         - APPUSER=${APPUSER}
     env_file:
-      - ${ENV_FILE}
+      - etc/env/${ENV_NAME}.env
       - ${SECRETS_FILE}
     environment:
       DO_SETUP: ${DO_SETUP}
@@ -61,7 +61,7 @@ services:
     volumes:
       - ./notebooks:/home/jovyan/work
     env_file:
-      - ${ENV_FILE}
+      - etc/env/${ENV_NAME}.env
       - ${SECRETS_FILE}
     depends_on:
       - python_template_redis

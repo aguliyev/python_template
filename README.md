@@ -47,8 +47,6 @@ The image name and repo is specified `IMAGE` var in .env file or system environm
 - [etc/env/](etc/env/)
 
     environment variables which can be commited to repo.
-    
-    path to this file is specified in `ENV_FILE`
 
 - [etc/secrets/](etc/secrets/)
 
@@ -74,7 +72,7 @@ The image name and repo is specified `IMAGE` var in .env file or system environm
     For production - that is a file somewhere on the server, not in this repo (if you decide to include secrets into this file).
     See [Makefile](Makefile) command `make startprod`
 
-- Those `.env.<env-name>` files also contain paths to the files which will be passed as container environment (vars `ENV_FILE, SECRETS_FILE`).
+- Those `.env.<env-name>` files also contain paths to the files which will be passed as container environment (vars `SECRETS_FILE`).
 
     E.g. see [.env.test](.env.test), [.env.prod.sample](.env.prod.sample)
 
