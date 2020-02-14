@@ -5,3 +5,5 @@ ARG PREPACK_IMAGE
 RUN echo "Installing from prepack ${PREPACK_IMAGE}"
 
 COPY . .
+
+ENTRYPOINT ["entrypoints/base.sh"]

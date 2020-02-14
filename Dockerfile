@@ -19,3 +19,5 @@ RUN echo "Running pip install with params: ${PIP_PARAMS}" && \
 
 FROM python_template_prepack
 COPY . .
+
+ENTRYPOINT ["entrypoints/base.sh"]
