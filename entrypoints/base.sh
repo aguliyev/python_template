@@ -8,8 +8,11 @@ if [ "$DO_SETUP" = "1" ]; then
 fi
 
 # You can check ENTRYPOINT_MODE to run different stuff
-if [ "$ENTRYPOINT_MODE" = "shell" ]; then
+if [ "$ENTRYPOINT_MODE" = "shellrun" ]; then
 	sh
 else
-  entrypoints/${ENV_NAME}.sh
+  # You can run environment specific setup:
+  [ -f entrypoints/${ENV_NAME}.sh ] && entrypoints/${ENV_NAME}.sh
+  # otherwise, run default
+  [ -f entrypoints/${ENV_NAME}.sh ] || entrypoints/default.sh
 fi
