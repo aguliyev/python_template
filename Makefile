@@ -45,7 +45,7 @@ jupyter:
 
 .PHONY: shell
 shell:
-	docker-compose exec -it python_template_web sh
+	docker-compose exec python_template_web sh
 
 .PHONY: shellrun
 shellrun:

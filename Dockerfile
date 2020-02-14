@@ -6,7 +6,7 @@ ARG APPUSER
 RUN apk update && \
     apk add build-base libpq postgresql-dev libxml2-dev libxslt-dev musl-dev libbz2 bzip2-dev xz-dev
 
-RUN adduser -D -g '' ${APPUSER}
+RUN adduser -D ${APPUSER}
 USER ${APPUSER}
 WORKDIR /home/${APPUSER}/app
 ENV PATH $PATH:/home/${APPUSER}/.local/bin
