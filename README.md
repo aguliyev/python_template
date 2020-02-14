@@ -25,6 +25,8 @@ Template for dockerized python project - web, jupyter.
     make jupyter
 
     make shell
+    
+    make shellrun
 
 # build and publish docker image
 
@@ -112,6 +114,17 @@ You can modify behavior of entrypoint (or setup) script when running it, by pass
         env ENTRYPOINT_MODE=integration make test
 
 This var is passed down to container, and can be checked inside the script.
+
+# shell
+
+shell into running container:
+
+    make shell
+
+run container console (without standard entrypoint):
+
+    make shellrun
+
 
 # More
 
