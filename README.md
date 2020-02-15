@@ -32,76 +32,75 @@ Template for dockerized python project - web, jupyter.
 
     make build publish
 
-The image name and repo is specified `IMAGE` var in .env file or system environment.
+The image name and repo is specified in `IMAGE` var in [.env](.env) file or system environment.
 
 ## prepack
 
-- It is optional; Is it just a way of "storing cache in the repo" instead of relying on local cache.
-- `make prepack` is creating a docker image for "prepack" stage of [Dockerfile](Dockerfile), and pushes it into the repo.
-- You build from this "prepack" image by having `FROM_PREPACK=_from_prepack` in .env file (see example in [.env.prod](.env.prod) ) or in system environment. It is empty by default.
-    - In this case, [Dockerfile_from_prepack](Dockerfile_from_prepack) is used instead of the main [Dockerfile](Dockerfile).
-- The docker repo for the image is defined by `PREPACK_IMAGE` var in .env file or system environment.
+It is optional; Is it just a way of "storing cache in the repo" instead of relying on local cache.
 
-# Environment configs and secrets
+Create an intermediate docker image ("prepack" stage) according to stage build in [Dockerfile](Dockerfile), and push it into the repo:
+
+    make prepack
+
+- The docker repo for the image is defined by `PREPACK_IMAGE` var in [.env](.env) file or system environment.
+
+To build using this "prepack" image:
+
+- `FROM_PREPACK=_from_prepack` in env file (see example in [.env.prod](.env.prod) ) or in system environment.
+    - In this case, [Dockerfile_from_prepack](Dockerfile_from_prepack) is used instead of the main [Dockerfile](Dockerfile).
+
+# Environment configs passed to container
+
+### non-secrets
 
 - [etc/env/](etc/env/)
 
-    environment variables which can be commited to repo.
+    - environment variables which can be commited to repo.
+    
+### secrets
 
 - [etc/secrets/](etc/secrets/)
 
-    environment variables which can **NOT** be commited to repo. 
-    
-    We may commit secrets for dev and test only to the repo;
-    
-    but for other environments (prod, stage), you have those files somewhere on the server but not in the repo.
-    
-    path to this file is specified in `SECRETS_FILE`
+    - Environment variables which can **NOT** be commited to repo.
+    - You may commit secrets for **dev** and **test** only to the repo.
+    - For other environments (prod, stage), you have those files somewhere on the server but not in the repo.
+    - Path to the secrets file is specified in `SECRETS_FILE` var in [.env](.env) file or system environment.
 
 ## Run in different environments
 
-- Variables used as configs for [docker-compose.yml](docker-compose.yml) and [Makefile](Makefile) are in
+- Variables used as configs for [docker-compose.yml](docker-compose.yml) and [Makefile](Makefile) come from (in this order):
+    - system environment variables.
+    - `.env.<env-name>` file is loaded to system environment by certain [Makefile](Makefile) shortcut commands (`test`, `startprod`).
+    - [.env](.env) file (defaults)
+- Variable `SECRETS_FILE` is a path to the file which will be passed as additional container environment.
+    - See [#secrets](#secrets)
+- Values present in the environment at runtime always override those defined inside the .env file.
+    Similarly, values passed via command-line arguments take precedence as well.
+    - So, you can avoid putting secrets into the file.
+    - In Kubernetes, it will be all in your environment variables, and you can use file for local dev/test only.
+- If you want to pass environment variable to container - include its name in [docker-compose.yml](docker-compose.yml) `environment:` section.
 
-    [.env](.env) 
+# Entrypoint
 
-- System env vars take precedence over vars in [.env](.env) file. (So, you can avoid putting secrets into the file)
+- [entrypoints/base.sh](entrypoints/base.sh)
+- You can have also per-environment entrypoint scripts, and `default` script; see [entrypoints/](entrypoints/).
+    - E.g.: [entrypoints/test.sh](entrypoints/test.sh) is running tests.
 
-- We load `.env.<env-name>` files as system env vars; they overload [.env](.env).
-    See [Makefile](Makefile) command `make test` or `make startprod`
-
-- Those `.env.<env-name>` files also contain paths to the files which will be passed as container environment (vars `SECRETS_FILE`).
-
-    E.g. see [.env.test](.env.test), [.env.prod](.env.prod)
-
-- For production, secrets for container (specified by `SECRETS_FILE`) will be a file somewhere on the server, not in the repo.
-
-- Values present in the environment at runtime always override those defined inside the .env file. Similarly, values passed via command-line arguments take precedence as well.
-
-# Entrypoints
-
-Per-environment entrypoint scripts:
-
-- [entrypoints/](entrypoints/)
-
-Notice: [entrypoints/test.sh](entrypoints/test.sh) is running tests.
-
-## Running or skipping setup in entrypoint
+## Setup scripts
 
 You may want to setup/bootstrap app on each startup - like DB migrations, data seeding etc.
 
-Per-environment setup scripts:
+- [entrypoints/setups/base.sh](entrypoints/setups/base.sh)
+- You can have also per-environment setup entrypoint scripts, just add them to [entrypoints/setups/](entrypoints/setups/)
 
-- [entrypoints/setups/](entrypoints/setups/)
+### Running or skipping setup in entrypoint 
 
-In some cases, you want to skip that slow step, and have lean entrypoint.
-
-That is controlled by var `DO_SETUP`.
-It is in [.env](.env), and may be overloaded by system env var when needed. E.g. run as:
+- In some cases, you want to skip that slow step, and have lean entrypoint.
+- That is controlled by var `DO_SETUP` in [.env](.env) file or system environment.
+- E.g.:
 
         env DO_SETUP=0 make start
         
-and yes, you can specify this var in `.env` file for each environment (e.g. [.env.test](.env.test)).
-
 ## Run entrypoint in different ways
 
 You can modify behavior of entrypoint (or setup) script when running it, by passing var `ENTRYPOINT_MODE` when running:
@@ -114,14 +113,27 @@ This var is passed down to container, and can be checked inside the script.
 
 # shell
 
-shell into running container:
+Shell into running container:
 
     make shell
 
-run container console (without standard entrypoint):
+Run container console (without standard entrypoint):
 
     make shellrun
 
+# Starting shortcuts
+
+Start with dependencies:
+
+    make start
+
+Load [.env.prod](.env.prod) and start without dependencies:
+
+    make startprod
+
+Load [.env.test](.env.test) and start with dependencies (the entrypoint runs tests):
+
+    make test
 
 # More
 
