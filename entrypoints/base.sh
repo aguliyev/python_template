@@ -11,7 +11,7 @@ fi
 if [ "$ENTRYPOINT_MODE" = "shellrun" ]; then
 	sh
 else
-  # You can run environment specific setup:
+  # You can run environment specific:
   [ -f entrypoints/${ENV_NAME}.sh ] && entrypoints/${ENV_NAME}.sh
   # otherwise, run default
   [ -f entrypoints/${ENV_NAME}.sh ] || entrypoints/default.sh
