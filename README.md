@@ -2,6 +2,22 @@
 
 Template for dockerized python project - web, jupyter.
 
+- [Make commands](#make-commands)
+- [Build and publish docker image](#build-and-publish-docker-image)
+    - [Prepack](#prepack)
+- [Environment configs passed to container](#environment-configs-passed-to-container)
+    - [Non-secrets](#non-secrets)
+    - [Secrets](#secrets)
+    - [Run in different environments](#run-in-different-environments)
+- [Entrypoint](#entrypoint)
+    - [Setup scripts](#setup-scripts)
+    - [Run entrypoint in different ways](#run-entrypoint-in-different-ways)
+- [Shell](#shell)
+- [Starting shortcuts](#starting-shortcuts)
+- [More](#more)
+- [Jupyter](#jupyter)
+- [Web](#web)
+
 # make commands
 
 [Makefile](Makefile)
@@ -111,7 +127,7 @@ You can modify behavior of entrypoint (or setup) script when running it, by pass
 
 This var is passed down to container, and can be checked inside the script.
 
-# shell
+# Shell
 
 Shell into running container:
 
