@@ -36,9 +36,9 @@ The image name and repo is specified in `IMAGE` var in [.env](.env) file or syst
 
 ## prepack
 
-It is optional; Is it just a way of "storing cache in the repo" instead of relying on local cache.
+It is optional; just a way of "storing cache in the repo" instead of relying on local cache.
 
-Create an intermediate docker image ("prepack" stage) according to stage build in [Dockerfile](Dockerfile), and push it into the repo:
+Create an intermediate docker image ("prepack" stage) according to the stage build in [Dockerfile](Dockerfile), and push it into the repo:
 
     make prepack
 
