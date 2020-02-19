@@ -23,11 +23,12 @@ Template for dockerized python project - web, jupyter.
 
 The aim is to have:
 
-- fully agnostic: docker-compose, dockerfile, built image.having the same command to run everywhere, but entrypoint working differently based on passed environment.
+- fully agnostic: docker-compose, dockerfile, built image. Having the same command to run everywhere, but entrypoint working differently based on passed environment.
 - non-secrets consolidated in env files in repo and passed to container.
 - secrets as env vars from host runtime and/or from a file (outside from repo), all passed to container.
+- kubernetes ready
 - all this code clean and well-organized.
-- multistage build is an option, but IMHO becomes redundant.
+- multistage build is an option, but redundant.
 
 # make commands
 
