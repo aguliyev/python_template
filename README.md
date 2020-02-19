@@ -27,6 +27,7 @@ The aim is to have:
 - non-secrets consolidated in env files in repo and passed to container.
 - secrets as env vars from host runtime and/or from a file (outside from repo), all passed to container.
 - kubernetes ready
+- unified commands, abstracting underlying details for all tasks.
 - all this code clean and well-organized.
 - multistage build is an option, but redundant.
 
