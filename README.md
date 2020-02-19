@@ -1,7 +1,6 @@
 # python_template
 
-Template for dockerized python project - web, jupyter.
-
+- [Overview](#overview)
 - [Make commands](#make-commands)
 - [Build and publish docker image](#build-and-publish-docker-image)
     - [Prepack](#prepack)
@@ -17,6 +16,18 @@ Template for dockerized python project - web, jupyter.
 - [More](#more)
 - [Jupyter](#jupyter)
 - [Web](#web)
+
+## Overview
+
+Template for dockerized python project - web, jupyter.
+
+The aim is to have:
+
+- fully agnostic: docker-compose, dockerfile, built image.having the same command to run everywhere, but entrypoint working differently based on passed environment.
+- non-secrets consolidated in env files in repo and passed to container.
+- secrets as env vars from host runtime and/or from a file (outside from repo), all passed to container.
+- all this code clean and well-organized.
+- multistage build is an option, but IMHO becomes redundant.
 
 # make commands
 
@@ -44,7 +55,7 @@ Template for dockerized python project - web, jupyter.
     
     make shellrun
 
-# build and publish docker image
+# Build and publish docker image
 
     make build publish
 
