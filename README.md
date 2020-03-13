@@ -82,13 +82,13 @@ To build using this "prepack" image:
 
 ### non-secrets
 
-- [etc/env/](etc/env/)
+- [etc/env/](etc/env/) a file per environment
 
     - environment variables which can be commited to repo.
     
 ### secrets
 
-- [etc/secrets/](etc/secrets/)
+- [etc/secrets/](etc/secrets/) a file per environment
 
     - Environment variables which can **NOT** be commited to repo.
     - You may commit secrets for **dev** and **test** only to the repo.
