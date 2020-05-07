@@ -80,3 +80,17 @@ services:
     depends_on:
       - python_template_redis
       - python_template_postgres
+
+  python_template_nginx:
+      image: nginx:1.17.10
+      container_name: python_template_nginx
+      ports:
+        - ${NGINX_PORT}:${NGINX_PORT}
+      networks:
+        - python_template_network
+      volumes:
+        - ./static_web:/usr/share/nginx/html
+        - ./etc/nginx/${ENV_NAME}/conf.d/:/etc/nginx/conf.d/
+      env_file:
+        - etc/env/${ENV_NAME}.env
+        - ${SECRETS_FILE}

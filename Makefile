@@ -16,7 +16,7 @@ publish:
 .PHONY: start
 start:
 	docker-compose up -d python_template_redis python_template_postgres
-	docker-compose up -d python_template_web
+	docker-compose up -d python_template_web python_template_nginx
 
 .PHONY: test
 startprod:
