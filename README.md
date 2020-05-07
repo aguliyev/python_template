@@ -19,7 +19,7 @@
 
 ## Overview
 
-Template for dockerized python project with environment and entrypoint management - web, jupyter.
+Template for dockerized python project with environment and entrypoint management - web, jupyter, nginx.
 
 The aim is to have:
 
