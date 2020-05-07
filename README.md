@@ -174,8 +174,11 @@ See [doc/](doc/)
 
         make jupyter
 
+    It will print the Jupyter access token.
+
 - [notebooks/](notebooks/)
 
 # Web
 
 - http://localhost:5000/
+- http://localhost/web/
