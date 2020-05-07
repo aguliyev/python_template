@@ -109,6 +109,10 @@ To build using this "prepack" image:
     - In Kubernetes, it will be all in your environment variables, and you can use file for local dev/test only.
 - If you want to pass environment variable to container - include its name in [docker-compose.yml](docker-compose.yml) `environment:` section.
 
+### nginx conf
+
+- [etc/nginx/](etc/nginx/) a dir/file per environment. Correct ports there, if you wish to access thru nginx
+
 # Entrypoint
 
 - [entrypoints/base.sh](entrypoints/base.sh)
@@ -182,3 +186,8 @@ See [doc/](doc/)
 
 - http://localhost:5000/
 - http://localhost/web/
+
+# Nginx
+
+- We run nginx, which can be optionally used and expanded.
+- Just update configs in [etc/nginx/](etc/nginx/)
