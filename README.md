@@ -8,6 +8,7 @@
     - [Non-secrets](#non-secrets)
     - [Secrets](#secrets)
     - [Run in different environments](#run-in-different-environments)
+    - [Nginx conf](#nginx-conf)
 - [Entrypoint](#entrypoint)
     - [Setup scripts](#setup-scripts)
     - [Run entrypoint in different ways](#run-entrypoint-in-different-ways)
@@ -16,6 +17,7 @@
 - [More](#more)
 - [Jupyter](#jupyter)
 - [Web](#web)
+- [Nginx](#nginx)
 
 ## Overview
 
