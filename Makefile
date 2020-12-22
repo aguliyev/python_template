@@ -28,6 +28,10 @@ test:
 	@env $(shell cat .env .env.test | grep "#" -v) docker-compose up -d python_template_redis python_template_postgres
 	@env $(shell cat .env .env.test | grep "#" -v) docker-compose up python_template_web
 
+.PHONY: test
+testshell:
+	@env $(shell cat .env .env.test | grep "#" -v) DO_SETUP=0 ENTRYPOINT_MODE=shellrun docker-compose run --rm python_template_web sh
+
 .PHONY: stop
 stop:
 	docker-compose stop

@@ -28,6 +28,7 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_DB
+      - POSTGRES_PORT
     ports:
       - ${WEB_PORT}:5000
     networks:
@@ -73,7 +74,13 @@ services:
     networks:
       - python_template_network
     volumes:
-      - ./notebooks:/home/jovyan/work
+      - ./:/home/jovyan/work
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - POSTGRES_PORT
+      - DJANGO_ALLOW_ASYNC_UNSAFE
     env_file:
       - etc/env/${ENV_NAME}.env
       - ${SECRETS_FILE}
