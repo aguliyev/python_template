@@ -50,6 +50,10 @@ Template used: https://github.com/aguliyev/python_template
     
     make shellrun
 
+    make dbbackup
+
+    make dbbackuprestore
+
 # Build and publish docker image
 
     make build publish
@@ -184,3 +188,9 @@ See [doc/](/doc/)
 
 - We run nginx, which can be optionally used and expanded.
 - Just update configs in [etc/nginx/](/etc/nginx/)
+
+# DB
+
+    make dbbackup
+
+    make dbbackuprestore
