@@ -18,6 +18,7 @@
 - [Jupyter](#jupyter)
 - [Web](#web)
 - [Nginx](#nginx)
+- [DB](#db)
 
 
 ## Overview
