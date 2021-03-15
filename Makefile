@@ -53,3 +53,11 @@ shell:
 .PHONY: shellrun
 shellrun:
 	@env DO_SETUP=0 ENTRYPOINT_MODE=shellrun docker-compose run --rm python_template_web sh
+
+.PHONY: dbbackup
+dbbackup:
+	docker exec -it marketsage_postgres bash -c "pg_dump --clean --username=\$$POSTGRES_USER --compress=9 --file=/mnt/backups/dump_\$$POSTGRES_DB\_`date +%Y-%m-%d_%H_%M_%S`.sql.gz \$$POSTGRES_DB"
+
+.PHONY: dbbackuprestore
+dbbackuprestore:
+	echo "TODO"
