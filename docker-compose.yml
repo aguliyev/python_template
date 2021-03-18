@@ -57,7 +57,7 @@ services:
       - POSTGRES_PASSWORD
       - POSTGRES_DB
     ports:
-      - ${POSTGRES_PORT}:5432
+      - ${POSTGRES_PORT_ON_HOST}:5432
     networks:
       - python_template_network
     volumes:
