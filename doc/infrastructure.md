@@ -183,7 +183,7 @@ See [doc/](/doc/)
 # Web
 
 - http://localhost:5000/
-- http://localhost/web/
+- http://localhost:8081/web/
 
 # Nginx
 

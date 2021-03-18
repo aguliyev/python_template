@@ -95,7 +95,7 @@ services:
       image: nginx:1.17.10
       container_name: python_template_nginx
       ports:
-        - ${NGINX_PORT}:${NGINX_PORT}
+        - ${NGINX_PORT_ON_HOST}:${NGINX_PORT}
       networks:
         - python_template_network
       volumes:
