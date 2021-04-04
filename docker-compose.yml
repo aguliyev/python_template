@@ -63,7 +63,7 @@ services:
     volumes:
       - python_template_postgres_volume:/var/lib/postgresql/data:cached
       - type: bind
-        source: .
+        source: ./tmp
         target: /mnt/backups
 
   python_template_jupyter:
