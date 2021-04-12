@@ -20,10 +20,8 @@ start:
 
 .PHONY: startprod
 startprod:
-	set -o allexport
-	source .env.prod
 	@echo "System env vars take precedence over vars in .env file. Additionally, loading .env.prod as system env vars."
-	docker-compose up -d python_template_web
+	@env $(shell cat .env .env.prod | grep "#" -v) docker-compose up -d python_template_web
 
 .PHONY: test
 test:
