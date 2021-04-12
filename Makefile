@@ -18,8 +18,10 @@ start:
 	docker-compose up -d python_template_redis python_template_postgres
 	docker-compose up -d python_template_web python_template_nginx
 
-.PHONY: test
+.PHONY: startprod
 startprod:
+	set -o allexport
+	source .env.prod
 	@echo "System env vars take precedence over vars in .env file. Additionally, loading .env.prod as system env vars."
 	@env $(shell cat .env .env.prod | grep "#" -v) docker-compose up -d python_template_web
 
@@ -28,7 +30,7 @@ test:
 	@env $(shell cat .env .env.test | grep "#" -v) docker-compose up -d python_template_redis python_template_postgres
 	@env $(shell cat .env .env.test | grep "#" -v) docker-compose up python_template_web
 
-.PHONY: test
+.PHONY: testshell
 testshell:
 	@env $(shell cat .env .env.test | grep "#" -v) DO_SETUP=0 ENTRYPOINT_MODE=shellrun docker-compose run --rm python_template_web sh
 
