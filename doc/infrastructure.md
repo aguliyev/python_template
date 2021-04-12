@@ -200,6 +200,10 @@ See [doc/](/doc/)
 
 # DB
 
+Files are dumped into and loaded from `tmp/`
+
     make dbbackup
 
-    make dbbackuprestore
+    DB_DUMP_FILE=marketsage_db_dev_2021-04-12_09_14_59.dump make dbbackuprestore
+
+Postgres `pg_dump`/`pg_restore` are used.

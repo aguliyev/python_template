@@ -60,4 +60,8 @@ dbbackup:
 
 .PHONY: dbbackuprestore
 dbbackuprestore:
-	echo "TODO"
+	@echo "Restoring from file under tmp/ :"
+	@echo $(DB_DUMP_FILE)
+	@echo "Restoring to DB:"
+	@echo $(value POSTGRES_DB)
+	docker exec -it marketsage_postgres bash -c "pg_restore --clean --username=\$$POSTGRES_USER --dbname=\$$POSTGRES_DB /mnt/backups/$(DB_DUMP_FILE)"
